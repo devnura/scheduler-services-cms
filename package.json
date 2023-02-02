@@ -1,0 +1,33 @@
+{
+  "name": "scheduler-services-cms",
+  "version": "1.0.0",
+  "description": "service to manage scheduller in card management system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devnura/scheduler-services-cms.git"
+  },
+  "author": "Devnura",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devnura/scheduler-services-cms/issues"
+  },
+  "homepage": "https://github.com/devnura/scheduler-services-cms#readme",
+  "dependencies": {
+    "@types/http-errors": "^2.0.1",
+    "express": "^4.18.2",
+    "pg": "^8.9.0",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.11"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.16",
+    "@types/node": "^18.11.18",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  }
+}
