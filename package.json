@@ -4,7 +4,8 @@
   "description": "service to manage scheduller in card management system",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -17,17 +18,20 @@
   },
   "homepage": "https://github.com/devnura/scheduler-services-cms#readme",
   "dependencies": {
-    "@types/http-errors": "^2.0.1",
+    "axios": "^1.3.2",
+    "chalk": "^5.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "knex": "^2.4.2",
+    "moment": "^2.29.4",
+    "node-cron": "^3.0.2",
+    "crypto-js": "^4.1.1",
     "pg": "^8.9.0",
-    "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.3.11"
+    "winston": "^3.8.2",
+    "winston-daily-rotate-file": "^4.7.1"
   },
   "devDependencies": {
-    "@types/express": "^4.17.16",
-    "@types/node": "^18.11.18",
-    "nodemon": "^2.0.20",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.9.5"
+    "nodemon": "^2.0.20"
   }
 }
