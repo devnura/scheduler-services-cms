@@ -6,27 +6,33 @@ let port;
 let user;
 let password;
 
-if (process.env.SERVICE_ENV == "local") {
-  host = "localhost";
-  database = "postgres";
-  port = 5432;
-  user = "postgres";
-  password = "postgres";
-} else if (process.env.SERVICE_ENV == "development") {
+if (process.env.SERVER_FOR == "development") {
   host = "10.20.14.14";
   database = "postgres";
   port = 5432;
   user = "cms";
   password = "Cm5kc1#2021";
-} else if (process.env.SERVICE_ENV == "production") {
+} else if (process.env.SERVER_FOR == "production") {
   host = "10.1.201.75";
   database = "postgres";
   port = 5432;
   user = "postgres";
   password = "inhc0mmute_cms";
+}else {
+  host = "localhost";
+  database = "CMS_DEV_SERVER";
+  port = 5432;
+  user = "postgres";
+  password = "root";
 }
-
+console.log({
+  host: host,
+  database: database,
+  user: user,
+  password: password,
+})
   module.exports = {
+
     development: {
       client: "pg",
       connection: {
@@ -35,6 +41,7 @@ if (process.env.SERVICE_ENV == "local") {
         user: user,
         password: password,
       },
+      // connection: process.env.DB_URL,
       pool: {
         min: 2,
         max: 10,
@@ -42,15 +49,6 @@ if (process.env.SERVICE_ENV == "local") {
       migrations: {
         directory: "./infrastructure/database/migrations",
       },
-    },
-
-    testing: {
-      client: "pg",
-      connection: process.env.DB_URL,
-      migrations: {
-        directory: "./infrastructure/database/migrations",
-      },
-      seeds: { directory: "./infrastructure/database/seeds" },
     },
 
     production: {
@@ -61,6 +59,7 @@ if (process.env.SERVICE_ENV == "local") {
         user: user,
         password: password,
       },
+      // connection: process.env.DB_URL,
       pool: {
         min: 2,
         max: 10,

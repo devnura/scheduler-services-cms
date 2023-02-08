@@ -7,6 +7,7 @@ const cron = require("node-cron");
 const moment = require("moment");
 const knex = require("./application/infrastructure/database/knex");
 
+const paymentRequest = require('./application/services/payment-requets')
 require("dotenv").config();
 
 moment.locale("id");
@@ -47,3 +48,9 @@ app.listen(process.env.SERVICE_PORT, () => {
     `Server is running on environment: ${process.env.SERVICE_ENV.toUpperCase()} port: ${process.env.SERVICE_PORT}`
   );
 });
+
+// ===================================================
+// SCHEDULER SERVICE
+// ===================================================
+
+cron.schedule("0 2 * * *", async () => { paymentRequest.generatePaymentRequest() })

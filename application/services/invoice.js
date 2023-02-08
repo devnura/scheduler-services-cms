@@ -3,7 +3,7 @@ const axios = require("axios");
 
 exports.generate_invoice = async () => {
 
-    const axiosConfig = {
+    const config = {
         method: 'get',
         headers : {
           'Content-Type': 'application/json',
@@ -15,10 +15,10 @@ exports.generate_invoice = async () => {
         }
       }
       
-    const response = await axios.post(url, body, config)
+    const response = await axios.post(url, config)
 
     winston.logger.info(`SERVICE : invoice | RESPONSE : ${JSON.stringify(response)}`)
     
-    return response.data
+    return response
 
 }

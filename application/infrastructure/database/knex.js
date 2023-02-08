@@ -1,22 +1,14 @@
+const knex = require("knex");
 require("dotenv").config();
-
-const Knex = require("knex");
 
 const knexfile = require("../../../knexfile");
 
-const env = process.env.SERVICE_ENV || "production";
+const env = process.env.SERVICE_ENV || "development";
+console.log(env)
+// if running unit testing, please change the configOptions to knexfile["testing"]
 
 const configOptions = knexfile[env];
+// const configOptions = knexfile["testing"];
 
-exports.connection = async () => {
-    try {
-        const knex = Knex(configOptions);
-        console.log("Connecting to database ", configOptions)
-        const now = knex.raw('SELECT now()').first()
-        return knex
 
-    } catch (error) {
-        throw new Error('Unable to connect to Postgres via Knex. Ensure a valid connection.')
-    }
-
-}
+module.exports = knex(configOptions);
