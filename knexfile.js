@@ -25,14 +25,8 @@ if (process.env.SERVER_FOR == "development") {
   user = "postgres";
   password = "root";
 }
-console.log({
-  host: host,
-  database: database,
-  user: user,
-  password: password,
-})
-  module.exports = {
 
+module.exports = {
     development: {
       client: "pg",
       connection: {
