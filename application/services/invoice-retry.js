@@ -3,12 +3,13 @@ const axios = require("axios");
 const knex = require("../infrastructure/database/knex")
 const { v4: uuidv4 } = require('uuid');
 
-exports.generatePaymentRequest = async () => {
+exports.generatePostingInvoice = async () => {
   
   let url = "-" 
   const exec_id = uuidv4()
-  const service_name = "GENERATE PAYMEMT REQUEST"
-  const parameter_code = "SCEDULER_URL_GENERATE_INVOICE"
+  const service_name = "RETRY POSTING INVOICE"
+  const parameter_code = "SCEDULER_URL_POSTING_INVOICE"
+
   try {
 
     winston.logger.info(
@@ -22,7 +23,7 @@ exports.generatePaymentRequest = async () => {
       .where('c_status', '=', "A")
       .first()
 
-    if(!parameter) throw new Error(`Failed getting parameter ${parameter_code} !`);
+      if(!parameter) throw new Error(`Failed getting parameter ${parameter_code} !`);
 
     url = parameter.c_value.toLowerCase()
 
