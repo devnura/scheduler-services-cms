@@ -1,11 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const helper = require("./application/helpers/helper");
 const winston = require("./application/helpers/winston.logger");
 const cron = require("node-cron");
 const moment = require("moment");
-const knex = require("./application/infrastructure/database/knex");
 
 const paymentRequest = require('./application/services/payment-requets')
 require("dotenv").config();
