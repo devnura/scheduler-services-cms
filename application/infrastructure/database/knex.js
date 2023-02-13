@@ -4,7 +4,6 @@ require("dotenv").config();
 const knexfile = require("../../../knexfile");
 
 const env = process.env.SERVICE_ENV || "development";
-console.log(env)
 // if running unit testing, please change the configOptions to knexfile["testing"]
 
 const configOptions = knexfile[env];
