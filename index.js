@@ -5,7 +5,6 @@ const winston = require("./application/helpers/winston.logger");
 const cron = require("node-cron");
 const moment = require("moment");
 
-const paymentRequest = require('./application/services/payment-requets')
 require("dotenv").config();
 
 moment.locale("id");
@@ -47,8 +46,28 @@ app.listen(process.env.SERVICE_PORT, () => {
   );
 });
 
+
 // ===================================================
 // SCHEDULER SERVICE
 // ===================================================
+const paymentRequest = require('./application/services/payment-requets')
+const retryPaymentRequest = require('./application/services/payment-requets-retry')
 
-cron.schedule("0 2 * * *", async () => { paymentRequest.generatePaymentRequest() })
+// ===================================================
+// |      CODE        |          Description
+// ===================================================
+// | * * * * *        | At every minute.
+// | 0 2 * * *        | At 02:00.
+// | 30 7 * * *       | At 07:30.
+// | 30 12 * * *      | At 12:30.
+// | 30 17 * * *      | At 17:30.
+// ===================================================
+
+// payment request
+cron.schedule("0 2 * * *", async () => { paymentRequest.service() })
+
+// retry
+cron.schedule("30 7 * * *", async () => { retryPaymentRequest.service() })
+cron.schedule("30 12 * * *", async () => { retryPaymentRequest.service() })
+cron.schedule("30 17 * * *", async () => { retryPaymentRequest.service() })
+

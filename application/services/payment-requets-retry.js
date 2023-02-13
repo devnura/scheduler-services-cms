@@ -7,8 +7,8 @@ exports.service = async () => {
   
   let url = "-" 
   const exec_id = uuidv4()
-  const service_name = "GENERATE PAYMEMT REQUEST"
-  const parameter_code = "SCEDULER_URL_GENERATE_PAYREQ"
+  const service_name = "RETRY POSTING PAYMEMT REQUEST"
+  const parameter_code = "SCEDULER_URL_RETRY_PAYREQ"
   try {
 
     winston.logger.info(
@@ -24,7 +24,6 @@ exports.service = async () => {
 
     if(!parameter) throw new Error(`Failed getting parameter ${parameter_code} !`);
 
-    // url = "HTTP://LOCALHOST:8000/API/PAYMENT-REQUEST".toLowerCase()
     url = parameter.c_value.toLowerCase()
 
     const config = {
