@@ -64,6 +64,7 @@ const retryPaymentRequest = require('./application/services/payment-requets-retr
 // ===================================================
 
 // payment request
+cron.schedule("* * * * *", async () => { console.log("scheduler service is runnig") })
 cron.schedule("0 2 * * *", async () => { paymentRequest.service() })
 
 // retry
