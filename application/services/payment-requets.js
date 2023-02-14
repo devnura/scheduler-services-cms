@@ -52,7 +52,7 @@ exports.service = async () => {
         winston.logger.info(`SERVICE : ${service_name} | EXEC ID : ${exec_id} | URL : ${url} | RESPONSE CODE : | RESPONSE DATA : ${JSON.stringify(error.message)}`)
       } else {
         // Something happened in setting up the request that triggered an Error
-        winston.logger.info(`SERVICE : ${service_name} | EXEC ID : ${exec_id} | URL : ${url} | ERROR : ${error.message}`)
+        winston.logger.info(`SERVICE : ${service_name} | EXEC ID : ${exec_id} | URL : ${url} | ERROR : INTERNAL SERVER ERROR`)
       }
   }
    
