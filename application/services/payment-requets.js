@@ -44,15 +44,17 @@ exports.service = async () => {
         // The request was made and the server responded with a status code
         // that falls out of the range of 2xx
         winston.logger.info(`SERVICE : ${service_name} | EXEC ID : ${exec_id} | URL : ${url} | RESPONSE CODE : ${error.response.status} | RESPONSE DATA : ${JSON.stringify(error.response.data)}`)
-
+        return error.response
       } else if (error.request) {
         // The request was made but no response was received
         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
         // http.ClientRequest in node.js
         winston.logger.info(`SERVICE : ${service_name} | EXEC ID : ${exec_id} | URL : ${url} | RESPONSE CODE : | RESPONSE DATA : ${JSON.stringify(error.message)}`)
+        return error.message
       } else {
         // Something happened in setting up the request that triggered an Error
         winston.logger.info(`SERVICE : ${service_name} | EXEC ID : ${exec_id} | URL : ${url} | ERROR : INTERNAL SERVER ERROR`)
+        return "Internal server erro"
       }
   }
    

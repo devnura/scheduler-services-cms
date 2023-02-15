@@ -65,7 +65,7 @@ const retryPaymentRequest = require('./application/services/payment-requets-retr
 
 // payment request
 cron.schedule("0 * * * *", async () => { console.log("scheduler service is runnig") })
-cron.schedule("0 5 * * *", async () => { 
+cron.schedule("0 2 * * *", async () => { 
   try {
     const service = await paymentRequest.service() 
     console.log(service)
@@ -75,7 +75,31 @@ cron.schedule("0 5 * * *", async () => {
 })
 
 // retry
-cron.schedule("30 7 * * *", async () => { retryPaymentRequest.service() })
-cron.schedule("30 12 * * *", async () => { retryPaymentRequest.service() })
-cron.schedule("30 17 * * *", async () => { retryPaymentRequest.service() })
+cron.schedule("30 7 * * *", async () => { 
+  try {
+    const service = await retryPaymentRequest.service() 
+    console.log(service)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+cron.schedule("30 12 * * *", async () => { 
+  try {
+    const service = await retryPaymentRequest.service() 
+    console.log(service)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+cron.schedule("30 17 * * *", async () => { 
+  try {
+    const service = await retryPaymentRequest.service() 
+    console.log(service)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
 
